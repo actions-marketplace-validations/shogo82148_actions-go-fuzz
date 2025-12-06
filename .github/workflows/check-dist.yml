@@ -22,9 +22,9 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v6
         with:
           node-version-file: "package.json"
           cache: "npm"
@@ -47,7 +47,7 @@ jobs:
         id: diff
 
       # If index.js was different than expected, upload the expected version as an artifact
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v5
         if: ${{ failure() && steps.diff.conclusion == 'failure' }}
         with:
           name: dist
